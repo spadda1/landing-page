@@ -20,3 +20,21 @@ function changeBg(bg, title) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const bookContents = document.querySelectorAll('.content');
+
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value.toLowerCase();
+
+        bookContents.forEach(content => {
+            const bookText = content.textContent.toLowerCase();
+            if (bookText.includes(query)) {
+                content.style.display = '';
+            } else {
+                content.style.display = 'none';
+            }
+        });
+    });
+});
+
